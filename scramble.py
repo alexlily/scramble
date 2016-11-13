@@ -1,8 +1,5 @@
 import random
-
 BLANK = '-'
-WIDTH = 3
-HEIGHT = 3
 
 class Puzzle():
 	def __init__(self, width, height):
@@ -12,7 +9,7 @@ class Puzzle():
 		self.scramble()
 
 	def scramble(self):
-		self. blank = int(random.random() * len(self.puzzle))
+		self.blank = int(random.random() * len(self.puzzle))
 		for i in range(5):
 			allowed = self.allowed_moves()
 			choice = random.choice(allowed)
@@ -32,7 +29,7 @@ class Puzzle():
 		
 	def get_slices(self):
 		return [
-			str(i) for i in range(9)
+			str(i) for i in range(self.width * self.height)
 		]
 
 	def allowed_moves(self):
@@ -83,15 +80,15 @@ class Puzzle():
 					line += self.puzzle[row*self.width + col] + " "
 			print(line)
 
-def main():
-	puzzle = Puzzle(WIDTH, HEIGHT)
-	puzzle.print_puzzle()
-	while not puzzle.solved():
-		direction = input() 
-		puzzle.make_move(direction)
-		puzzle.print_puzzle()
-	print("You solved it!")
+# def main():
+# 	puzzle = Puzzle(WIDTH, HEIGHT)
+# 	puzzle.print_puzzle()
+# 	while not puzzle.solved():
+# 		direction = input() 
+# 		puzzle.make_move(direction)
+# 		puzzle.print_puzzle()
+# 	print("You solved it!")
 
-main()
+# main()
 
 
